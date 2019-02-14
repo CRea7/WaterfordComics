@@ -51,10 +51,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         Comic comic = mDataset.get(position);
-        holder.comicName.setText(comic.getComicTitle());
-        holder.comicIssueNum.setText(comic.getIssueNumber());
-        //Picasso.get().load(comic.getImage()).fit().into(holder.comicImage);
+        if(comic.getImage().isEmpty())
+        {
+            //do nothing
+        }
+        else {
+            holder.comicName.setText(comic.getComicTitle());
+            holder.comicIssueNum.setText(comic.getIssueNumber());
+            if (comic.getImage().isEmpty()) {
 
+            } else {
+                Picasso.get().load(comic.getImage()).fit().into(holder.comicImage);
+            }
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)

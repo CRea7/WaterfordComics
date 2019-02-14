@@ -160,10 +160,6 @@ public class MainActivity extends Base{
                                     }
                                 }
                                 JSONArray Images = item.getJSONArray("images");
-                                if(Images.length() == 0)
-                                {
-                                    check = 0;
-                                }
                                 for(int c = 0; c < Images.length(); c++)
                                 {
                                     JSONObject image = Images.getJSONObject(c);
@@ -171,11 +167,16 @@ public class MainActivity extends Base{
                                     //JSONObject path = image.getJSONObject("path");
                                     String imageHold = image.getString("path");
                                     extenstion_list = image.getString("extension");
-                                    image_list = imageHold + "portrait_xlarge" + extenstion_list;
+                                    image_list = imageHold + "/portrait_xlarge." + extenstion_list;
 
                                 }
 
-                                if(check == 0) {
+                                if(image_list == "")
+                                {
+                                    check = 1;
+                                }
+
+                                if(check == 1) {
                                     comicList.add(new Comic(id_list, Title_list, image_list, extenstion_list, issueNum_list, storeDate_list, price_list));
                                 }
                                 Log.i("comic", comicList.get(0).toString());
