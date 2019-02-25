@@ -22,6 +22,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.waterfordcomicsapp.R;
 import com.example.waterfordcomicsapp.adapters.MyAdapter;
 import com.example.waterfordcomicsapp.models.Comic;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -202,6 +204,10 @@ public class MainActivity extends Base{
                 });
         // Adding the request to the queue along with a unique string tag
         requestQueue.add(jsonObjReq);
+
+    }
+
+    public void AddComic(){
 
     }
 }
