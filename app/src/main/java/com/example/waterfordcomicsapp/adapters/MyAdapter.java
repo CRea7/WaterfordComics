@@ -65,7 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             holder.comicName.setText(comic.getComicTitle());
             holder.comicIssueNum.setText(comic.getIssueNumber());
             if (comic.getImage().isEmpty()) {
-
+                Picasso.get().load("http://via.placeholder.com/150x225").fit().into(holder.comicImage);
             } else {
                 Picasso.get().load(comic.getImage()).fit().into(holder.comicImage);
             }
@@ -75,34 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.addImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = comic.getComicTitle();
-                String issue = comic.getIssueNumber();
-                String id = comic.getComicId();
-                String image = comic.getImage();
-                String price = comic.getPrice();
-                String extension = comic.getExtension();
-                String storeDate = comic.getStoreDate();
-
-                HashMap<String, String> dataMap = new HashMap<String, String>();
-                dataMap.put("ComicTitle", title);
-                dataMap.put("ComicIssueNum", issue);
-                dataMap.put("ComicId", id);
-                dataMap.put("ComicImage", image);
-                dataMap.put("ComicPrice", price);
-                dataMap.put("ComicExtension", extension);
-                dataMap.put("ComicStoreDate", storeDate);
-
-                mDatabase.push().setValue(dataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    //this lets the user know if the data has been added correctly.
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Log.i("Add", "Add Successful");
-                        } else {
-                            Log.i("Add", "Add Failed");
-                        }
-                    }
-                });
+                mDatabase.child(comic.getComicId()).setValue(comic);
             }
         });
     }

@@ -1,8 +1,8 @@
 package com.example.waterfordcomicsapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,8 +21,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.waterfordcomicsapp.R;
 import com.example.waterfordcomicsapp.adapters.MyAdapter;
 import com.example.waterfordcomicsapp.models.Comic;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,8 +29,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Base{
     RequestQueue requestQueue;
-    Button getButton;
-    TextView responseTv;
+    Button comicPage;
     public RecyclerView mRecyclerView;
     public RecyclerView.Adapter mAdapter;
     public RecyclerView.LayoutManager mLayoutManager;
@@ -51,6 +47,7 @@ public class MainActivity extends Base{
 
         test(requestQueue);
 
+        comicPage = findViewById(R.id.button_comic);
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -64,8 +61,6 @@ public class MainActivity extends Base{
             public void onClick(View view) {
                 test(requestQueue);
                 String Text_View = ReturnString;
-                //responseTv =  findViewById(R.id.response);
-                //responseTv.setText(Text_View);
             }
         });
 
@@ -207,7 +202,7 @@ public class MainActivity extends Base{
 
     }
 
-    public void AddComic(){
-
+    public void GoToMyComicPage(View v){
+        startActivity (new Intent(this, MyComics.class));
     }
 }
