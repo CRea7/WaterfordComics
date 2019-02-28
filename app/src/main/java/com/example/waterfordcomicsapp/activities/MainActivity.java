@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,8 +27,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends Base{
+public class MainActivity extends Base implements SearchView.OnQueryTextListener {
     RequestQueue requestQueue;
     Button comicPage;
     public RecyclerView mRecyclerView;
@@ -73,6 +75,11 @@ public class MainActivity extends Base{
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(this);
+
         return true;
     }
 
@@ -205,4 +212,22 @@ public class MainActivity extends Base{
     public void GoToMyComicPage(View v){
         startActivity (new Intent(this, MyComics.class));
     }
+//
+//    @Override
+//    public boolean onQueryTextSubmit(String query) {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean onQueryTextChange(String newText) {
+//
+//        String userInput = newText.toLowerCase();
+//        List<Comic> newList = new ArrayList<>();
+//
+//        for(Comic comic : comicList)
+//
+//            ((MyAdapter))mRecyclerView.getListUpdate();
+//
+//        return false;
+//    }
 }

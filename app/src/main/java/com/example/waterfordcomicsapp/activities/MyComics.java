@@ -1,5 +1,6 @@
 package com.example.waterfordcomicsapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -50,54 +51,6 @@ public class MyComics extends Base {
 
         final ArrayList<FavouriteComics> MyComicsList = new ArrayList<>();
 
-//        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                FavouriteComics value = dataSnapshot.getValue(FavouriteComics.class);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//
-//
-////        mDatabase.addValueEventListener(new ValueEventListener() {
-////            @Override
-////            public void onDataChange(DataSnapshot dataSnapshot) {
-////
-////                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-////
-////                 FavouriteComics value = ds.getValue(FavouriteComics.class);
-////                 //Comic comic = new Comic();
-////                 String title = value.getComicTitle();
-////                 String issue = value.getIssueNumber();
-////                 //String image = value.getImage();
-////                 //String price = value.getPrice();
-////                 //String extension = value.getExtension();
-////                 //String storeDate = value.getStoreDate();
-////                 String id = value.getComicId();
-////                 String FbID = ds.getKey();
-////                 //comic.setComicTitle(title);
-////                 //comic.setIssueNumber(issue);
-////                 //comic.setImage(image);
-////                 //comic.setPrice(price);
-////                 //comic.setExtension(extension);
-////                 //comic.setStoreDate(storeDate);
-////                 //comic.setComicId(id);
-////                 Log.i("Fire" , "Hello"+title);
-////                 MyComicsList.add(value);
-////                 Log.i("My Comics", "HEllo"+value.toString());
-////                }
-////
-////            }
-////            @Override
-////            public void onCancelled(DatabaseError databaseError) {
-////               // System.out.println("The read failed: " + databaseError.getCode());
-////            }
-////
-////        });
 
         Log.i("Fire", String.valueOf(MyComicsList.size()));
 
@@ -143,6 +96,11 @@ public class MyComics extends Base {
         mAdapter.startListening();
         mRecyclerView.setAdapter(mAdapter);
     }
+
+    public void GoHome(View v){
+        startActivity (new Intent(this, MainActivity.class));
+    }
+
 
  class recyclerViewHolder extends RecyclerView.ViewHolder {
         public TextView comicName;
