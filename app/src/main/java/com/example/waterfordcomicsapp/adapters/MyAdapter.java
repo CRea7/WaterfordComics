@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,6 +67,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         final Comic comic = mDataset.get(position);
             holder.comicName.setText(comic.getComicTitle());
             holder.comicIssueNum.setText(comic.getIssueNumber());
+
+            //Some comics dont have images so assign placeholder to those
             if (comic.getImage().isEmpty()) {
                 Picasso.get().load("http://via.placeholder.com/150x225").fit().into(holder.comicImage);
             } else {
@@ -88,10 +91,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return mDataset.size();
     }
 
+
+    //search filter which is not working
     public void getListUpdate(List<Comic> newList){
         mDataset = new ArrayList<>();
         mDataset.addAll(newList);
         notifyDataSetChanged();
     }
+
 
 }

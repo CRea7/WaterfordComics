@@ -77,8 +77,10 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setOnQueryTextListener(this);
+
+        //This makes it crassh on startup not sure why
+        //SearchView searchView = (SearchView) menuItem.getActionView();
+        //searchView.setOnQueryTextListener(this);
 
         return true;
     }
@@ -100,6 +102,7 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
 
     int check = 0;
 
+    //This method makes an api call and filters through the data and adds it to a list
     public void test(RequestQueue requestQueue){
 
         String url = "http://gateway.marvel.com/v1/public/comics?ts=" + getString(R.string.ts) +"&apikey="+ getString(R.string.public_key) +"&hash=" + getString(R.string.hash) + "&limit=100";
@@ -142,6 +145,7 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
                                 //JSONObject ComicID = item.getJSONObject("id");
                                 id_list = item.getString("id");
 
+                                //Prices not coming back not necessary for assignment 1
                                 JSONArray Prices = item.getJSONArray("prices");
                                 for(int y=0; y < Prices.length(); y++)
                                 {
@@ -153,6 +157,7 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
                                         price_list = item.getString("price");
                                     }
                                 }
+                                //Dates not coming back not necessary for assignment 1
                                 JSONArray Dates = item.getJSONArray("dates");
                                 for(int z = 0; z < Dates.length(); z++) {
                                     JSONObject dateItem = Dates.getJSONObject(z);
@@ -212,22 +217,33 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
     public void GoToMyComicPage(View v){
         startActivity (new Intent(this, MyComics.class));
     }
-//
-//    @Override
-//    public boolean onQueryTextSubmit(String query) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean onQueryTextChange(String newText) {
-//
-//        String userInput = newText.toLowerCase();
-//        List<Comic> newList = new ArrayList<>();
-//
-//        for(Comic comic : comicList)
-//
-//            ((MyAdapter))mRecyclerView.getListUpdate();
-//
-//        return false;
-//    }
+
+    //cannot get search working as crashes on startup
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+
+        ArrayList<Comic> comicArrayList = new ArrayList<>();
+        for (Comic item : comicList)
+        {
+            if(item.comicTitle.contains(query))
+            {
+                comicArrayList.add(item);
+            }
+        }
+
+        comicList = null;
+
+        for (Comic comic : comicArrayList)
+        {
+            comicList.add(comic);
+        }
+        mAdapter.notifyDataSetChanged();
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+
+        return false;
+    }
 }
