@@ -46,7 +46,7 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         requestQueue = Volley.newRequestQueue(this);
-
+        Log.i("API", "it hits on create");
         test(requestQueue);
 
         comicPage = findViewById(R.id.button_comic);
@@ -106,7 +106,7 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
     public void test(RequestQueue requestQueue){
 
         String url = "http://gateway.marvel.com/v1/public/comics?ts=" + getString(R.string.ts) +"&apikey="+ getString(R.string.public_key) +"&hash=" + getString(R.string.hash) + "&limit=100";
-
+        Log.i("API", "makes it inside test");
 
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
                 url,
@@ -119,7 +119,7 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
                             JSONArray result_list = init_list.getJSONArray("results");
                             int count = result_list.length();
                             String countS = String.valueOf(count);
-                            Log.i("count", countS);
+                            Log.i("API", "inside try");
 
                             for(int x=0; x < result_list.length(); x++){
                                 String Title_list;
