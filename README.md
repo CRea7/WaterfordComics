@@ -15,6 +15,6 @@ and keep the comics aside for them.
 #### Api call : https://developer.android.com/training/volley/simple#java
 #### Delete : https://stackoverflow.com/questions/37390864/how-to-delete-from-firebase-realtime-database
 #### Search : https://www.youtube.com/watch?v=qzbvDJqXeJs
-#### Recycler onclic : https://www.youtube.com/watch?v=ZXoGG2XTjzU
+#### Recycler onclick : https://www.youtube.com/watch?v=ZXoGG2XTjzU
 
 ### Demo Link: 
