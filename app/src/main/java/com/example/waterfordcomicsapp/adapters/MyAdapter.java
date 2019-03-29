@@ -89,7 +89,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 mDatabase.child(comic.getComicId()).setValue(comic);
             }
         });
-        
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

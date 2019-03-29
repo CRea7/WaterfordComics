@@ -185,8 +185,10 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
                                     check = 1;
                                 }
 
+                                String note = "";
+
                                 if(check == 1) {
-                                    comicList.add(new Comic(id_list, Title_list, image_list, extenstion_list, issueNum_list, storeDate_list, price_list));
+                                    comicList.add(new Comic(id_list, Title_list, image_list, extenstion_list, issueNum_list, storeDate_list, price_list, note));
                                 }
                                 Log.i("comic", comicList.get(0).toString());
                                 int comiclength = comicList.size();

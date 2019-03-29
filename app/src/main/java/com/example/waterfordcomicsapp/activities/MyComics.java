@@ -93,6 +93,7 @@ public class MyComics extends Base {
                         Intent intent = new Intent(mContext, SavedComicsActivity.class);
                         intent.putExtra("image_url", comicImageUrl);
                         intent.putExtra("comic_name", comic.getComicTitle());
+                        intent.putExtra("comic_id", comic.getComicId());
                         mContext.startActivity(intent);
                     }
                 });
