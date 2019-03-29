@@ -89,16 +89,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 mDatabase.child(comic.getComicId()).setValue(comic);
             }
         });
-
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, SavedComicsActivity.class);
-                intent.putExtra("image_url", comicImageUrl);
-                intent.putExtra("comic_name", comic.getComicTitle());
-                mContext.startActivity(intent);
-            }
-        });
+        
     }
 
     // Return the size of your dataset (invoked by the layout manager)
