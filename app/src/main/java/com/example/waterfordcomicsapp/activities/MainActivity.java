@@ -54,7 +54,7 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MyAdapter(comicList);
+        mAdapter = new MyAdapter(this, comicList);
         mRecyclerView.setAdapter(mAdapter);
 
         FloatingActionButton fab = findViewById(R.id.fab);

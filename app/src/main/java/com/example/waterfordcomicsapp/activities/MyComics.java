@@ -3,7 +3,6 @@ package com.example.waterfordcomicsapp.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,18 +14,13 @@ import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.example.waterfordcomicsapp.R;
-import com.example.waterfordcomicsapp.adapters.MyAdapter;
 import com.example.waterfordcomicsapp.models.Comic;
 import com.example.waterfordcomicsapp.models.FavouriteComics;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -41,6 +35,7 @@ public class MyComics extends Base {
     public FirebaseRecyclerAdapter mAdapter;
     public RecyclerView.LayoutManager mLayoutManager;
 
+    //Direbase adapter to display list as recycler view wasn't working
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +70,7 @@ public class MyComics extends Base {
                     Picasso.get().load(comic.getImage()).fit().into(holder.comicImage);
                 }
 
-
+                //Same as add but on delete
                 holder.deleteButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -112,7 +107,7 @@ public class MyComics extends Base {
             super(v);
             comicName = v.findViewById(R.id.comic_name);
             comicIssueNum = v.findViewById(R.id.comic_issueNum);
-            comicImage = v.findViewById(R.id.comic_image);
+            comicImage = v.findViewById(R.id.my_comic_image);
             addImage = v.findViewById(R.id.comic_add);
             deleteButton = v. findViewById(R.id.comic_delete);
         }
