@@ -53,7 +53,7 @@ public class SavedComicsActivity extends Base{
             comicId = getIntent().getStringExtra("comic_id");
 
             Log.i("ComicId", comicId);
-            firebaseStuff();
+            firebaseStuff(imageUrl,comicName);
             setScreen(imageUrl,comicName);
         }
 
@@ -72,7 +72,7 @@ public class SavedComicsActivity extends Base{
 
     }
 
-    private void firebaseStuff()
+    private void firebaseStuff(final String imageUrl, final String comicName)
     {
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
@@ -87,6 +87,7 @@ public class SavedComicsActivity extends Base{
                     {
                         comicNote = comic.note;
                         Log.i("ComicNote", comicNote);
+                        setScreen(imageUrl,comicName);
                     }
 
                     String comics = comic.toString();
