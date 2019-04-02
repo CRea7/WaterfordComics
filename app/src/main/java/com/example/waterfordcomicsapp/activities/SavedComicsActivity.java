@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SavedComicsActivity extends Base{
 
@@ -36,7 +40,14 @@ public class SavedComicsActivity extends Base{
         db = FirebaseDatabase.getInstance();
         mDatabase = db.getReference().child("Comic");
 
-
+        Button updateButton = findViewById(R.id.buttonUpdate);
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("update", "it ran updateNotes()");
+                updateNotes();
+            }
+        });
 
         final ArrayList<FavouriteComics> MyComicsList = new ArrayList<>();
 
@@ -100,6 +111,18 @@ public class SavedComicsActivity extends Base{
 
             }
         });
+    }
+
+    private void updateNotes()
+    {
+        EditText editText = findViewById(R.id.descriptionEditText);
+        String newNote = editText.getText().toString();
+
+        DatabaseReference taskRef = mDatabase.child(comicId);
+
+        Map<String,Object> taskMap = new HashMap<String,Object>();
+        taskMap.put("note", newNote);
+        taskRef.updateChildren(taskMap);
     }
 
 }

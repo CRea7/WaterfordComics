@@ -11,9 +11,13 @@
         android:layout_height="150dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="44dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="20dp"
         android:contentDescription="band"
         android:paddingBottom="10dp"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionEditText"
+        app:layout_constraintEnd_toStartOf="@+id/my_comic_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,20 +35,34 @@
     <EditText
         android:id="@+id/descriptionEditText"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="379dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="5dp"
         android:gravity="top"
         android:hint="Description"
         android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
         android:maxLines="6"
         android:minLines="3"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_comic_image" />
+
+    <Button
+        android:id="@+id/buttonUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="40dp"
+        android:text="Save Note"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_comic_image"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionEditText"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
