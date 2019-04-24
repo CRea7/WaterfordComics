@@ -16,5 +16,6 @@ and keep the comics aside for them.
 #### Delete : https://stackoverflow.com/questions/37390864/how-to-delete-from-firebase-realtime-database
 #### Search : https://www.youtube.com/watch?v=qzbvDJqXeJs
 #### Recycler onclick : https://www.youtube.com/watch?v=ZXoGG2XTjzU
+#### Firebase recycler filter: https://stackoverflow.com/questions/45966414/android-how-to-filter-the-recyclerview-of-firebase
 
 ### Demo Link: 
