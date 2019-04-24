@@ -23,8 +23,12 @@
           }
         },
         {
-          "client_id": "628106897802-uj57sk4k9u3m0m0cn19j3j49ra930cd7.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "628106897802-npg69d7e55jn585373d3rcb5g3p6qmbm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.waterfordcomicsapp",
+            "certificate_hash": "6c23e9a50c6a0565a6cc8de3307717ef75c35656"
+          }
         }
       ],
       "api_key": [
@@ -33,20 +37,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "628106897802-uj57sk4k9u3m0m0cn19j3j49ra930cd7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

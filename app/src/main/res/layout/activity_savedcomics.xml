@@ -45,7 +45,7 @@
         android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
         android:maxLines="6"
         android:minLines="3"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/SignInButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_comic_image" />

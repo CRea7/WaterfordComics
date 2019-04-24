@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.waterfordcomicsapp.R;
+import com.example.waterfordcomicsapp.SignUpInActivity;
 import com.example.waterfordcomicsapp.adapters.MyAdapter;
 import com.example.waterfordcomicsapp.models.Comic;
 
@@ -78,7 +79,7 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
 
-        //This makes it crassh on startup not sure why
+        //This makes it crash on startup not sure why
         //SearchView searchView = (SearchView) menuItem.getActionView();
         //searchView.setOnQueryTextListener(this);
 
@@ -218,6 +219,9 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
 
     public void GoToMyComicPage(View v){
         startActivity (new Intent(this, MyComics.class));
+    }
+    public void GoToSignInPage(View v){
+        startActivity (new Intent(this, SignUpInActivity.class));
     }
 
     //cannot get search working as crashes on startup
