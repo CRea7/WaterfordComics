@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class Base extends AppCompatActivity {
 
     //Declare a private RequestQueue variable
+    public String userEmail = "";
 
     private static Base mInstance;
 

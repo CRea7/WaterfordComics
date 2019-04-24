@@ -20,6 +20,8 @@ import com.example.waterfordcomicsapp.models.Comic;
 import com.example.waterfordcomicsapp.models.FavouriteComics;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -37,12 +39,18 @@ public class MyComics extends Base {
     public FirebaseRecyclerAdapter mAdapter;
     public RecyclerView.LayoutManager mLayoutManager;
     private Context mContext;
+    private FirebaseAuth mAuth;
 
     //Firebase adapter to display list as recycler view wasn't working
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_comics);
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        userEmail = currentUser.getEmail();
+        Log.i("UserEmail", userEmail);
 
         mContext = this;
 
@@ -58,7 +66,7 @@ public class MyComics extends Base {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         final Query query;
-        query= FirebaseDatabase.getInstance().getReference().child("Comic");
+        query= FirebaseDatabase.getInstance().getReference().child("Comic").orderByChild("userEmail").equalTo(userEmail);
         FirebaseRecyclerOptions<Comic> options = new FirebaseRecyclerOptions.Builder<Comic>()
                 .setQuery(query,Comic.class).build();
 

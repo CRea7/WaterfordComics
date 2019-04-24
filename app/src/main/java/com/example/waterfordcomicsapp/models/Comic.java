@@ -12,11 +12,12 @@ public class Comic implements Serializable
     public String storeDate;
     public String price;
     public String note;
+    public String userEmail;
 
 
     public Comic() {}
 
-    public Comic(String comicId, String Title, String image,String extension, String issueNumber, String storeDate, String price, String note)
+    public Comic(String comicId, String Title, String image,String extension, String issueNumber, String storeDate, String price, String note, String userEmail)
     {
         this.comicId = comicId;
         this.comicTitle = Title;
@@ -26,12 +27,13 @@ public class Comic implements Serializable
         this.storeDate = storeDate;
         this.price = price;
         this.note = note;
+        this.userEmail = userEmail;
     }
 
     @Override
     public String toString() {
         return comicId + ", " + comicTitle + ", " + image + ", " + extension + ", " + issueNumber
-                + ", " + storeDate + ", " + price + ", " + note;
+                + ", " + storeDate + ", " + price + ", " + note + ", " + userEmail;
     }
 
     public String getComicId() {
@@ -93,4 +95,8 @@ public class Comic implements Serializable
     public String getNote () { return note; }
 
     public void setNote (String note) { this.note = note; }
+
+    public String getUserEmail () { return userEmail; }
+
+    public void setUserEmail (String userEmail) {this.userEmail = userEmail; }
 }

@@ -23,6 +23,8 @@ import com.example.waterfordcomicsapp.R;
 import com.example.waterfordcomicsapp.SignUpInActivity;
 import com.example.waterfordcomicsapp.adapters.MyAdapter;
 import com.example.waterfordcomicsapp.models.Comic;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -38,6 +40,7 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
     public RecyclerView.LayoutManager mLayoutManager;
     String ReturnString;
     ArrayList<Comic> comicList  = new ArrayList<Comic>();
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -49,6 +52,8 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
         requestQueue = Volley.newRequestQueue(this);
         Log.i("API", "it hits on create");
         test(requestQueue);
+
+        mAuth = FirebaseAuth.getInstance();
 
         comicPage = findViewById(R.id.button_comic);
         mRecyclerView = findViewById(R.id.recycler_view);
@@ -67,8 +72,8 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
             }
         });
 
-
-
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        userEmail = currentUser.getEmail();
     }
 
 
@@ -189,7 +194,7 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
                                 String note = "";
 
                                 if(check == 1) {
-                                    comicList.add(new Comic(id_list, Title_list, image_list, extenstion_list, issueNum_list, storeDate_list, price_list, note));
+                                    comicList.add(new Comic(id_list, Title_list, image_list, extenstion_list, issueNum_list, storeDate_list, price_list, note, userEmail));
                                 }
                                 Log.i("comic", comicList.get(0).toString());
                                 int comiclength = comicList.size();

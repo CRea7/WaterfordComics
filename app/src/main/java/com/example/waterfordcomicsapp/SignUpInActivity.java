@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.waterfordcomicsapp.activities.Base;
 import com.example.waterfordcomicsapp.activities.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignUpInActivity extends AppCompatActivity {
+public class SignUpInActivity extends Base {
 
     private FirebaseAuth mAuth;
 
@@ -53,6 +54,7 @@ public class SignUpInActivity extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                     Log.i("LogIn", "user logged in sucessfully");
                     GoHome();
+                    userEmail = user.getEmail();
                 } else {
                     Log.i("LogIn","User log in failed");
                     Toast.makeText(SignUpInActivity.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
