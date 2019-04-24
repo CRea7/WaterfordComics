@@ -71,9 +71,11 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
                 String Text_View = ReturnString;
             }
         });
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            if(currentUser != null) {
+                userEmail = currentUser.getEmail();
+            }
 
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        userEmail = currentUser.getEmail();
     }
 
 
@@ -99,8 +101,8 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_LogOut) {
+            FirebaseAuth.getInstance().signOut();
         }
 
         return super.onOptionsItemSelected(item);
@@ -223,7 +225,14 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
     }
 
     public void GoToMyComicPage(View v){
-        startActivity (new Intent(this, MyComics.class));
+        if(userEmail != "")
+        {
+            startActivity (new Intent(this, MyComics.class));
+        }
+        else
+        {
+            startActivity (new Intent(this, SignUpInActivity.class));
+        }
     }
     public void GoToSignInPage(View v){
         startActivity (new Intent(this, SignUpInActivity.class));

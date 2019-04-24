@@ -49,7 +49,9 @@ public class MyComics extends Base {
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        userEmail = currentUser.getEmail();
+        if(currentUser != null) {
+            userEmail = currentUser.getEmail();
+        }
         Log.i("UserEmail", userEmail);
 
         mContext = this;
