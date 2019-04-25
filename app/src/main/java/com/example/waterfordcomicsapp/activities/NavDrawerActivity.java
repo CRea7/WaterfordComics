@@ -1,5 +1,6 @@
 package com.example.waterfordcomicsapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +18,8 @@ import com.example.waterfordcomicsapp.R;
 
 public class NavDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public String userEmail = "";
 
     NavigationView navigationView;
     DrawerLayout drawer;
@@ -86,16 +89,19 @@ public class NavDrawerActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+            startActivity (new Intent(this, MainActivity.class));
+        } else if (id == R.id.nav_saved) {
+            if(userEmail != "")
+            {
+                startActivity (new Intent(this, MyComics.class));
+            }
+            else
+            {
+                startActivity (new Intent(this, SignUpInActivity.class));
+            }
+        } else if (id == R.id.nav_signIn) {
+            startActivity (new Intent(this, SignUpInActivity.class));
+        } else if (id == R.id.nav_create) {
 
         }
 

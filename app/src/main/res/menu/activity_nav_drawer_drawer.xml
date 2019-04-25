@@ -9,29 +9,21 @@
             android:icon="@drawable/home"
             android:title="Home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_saved"
+            android:icon="@drawable/ic_star_black_24dp"
+            android:title="Saved Comics" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Log in options">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_signIn"
+                android:icon="@drawable/ic_person_black_24dp"
+                android:title="SignIn" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_create"
+                android:icon="@drawable/ic_person_add_black_24dp"
+                android:title="Create Account" />
         </menu>
     </item>
 

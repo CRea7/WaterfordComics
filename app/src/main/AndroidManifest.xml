@@ -16,8 +16,10 @@
             android:name=".activities.NavDrawerActivity"
             android:label="@string/title_activity_nav_drawer"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".activities.SavedComicsActivity$SignUpInActivity" />
-        <activity android:name=".activities.MyComics" />
+        <activity android:name=".activities.SignUpInActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activities.MyComics"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"

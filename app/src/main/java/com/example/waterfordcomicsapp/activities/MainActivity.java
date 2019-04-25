@@ -1,5 +1,7 @@
 package com.example.waterfordcomicsapp.activities;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,10 +9,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
 
 import com.android.volley.Request;
@@ -30,7 +34,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity extends Base implements SearchView.OnQueryTextListener {
+public class MainActivity extends NavDrawerActivity implements SearchView.OnQueryTextListener {
     RequestQueue requestQueue;
     Button comicPage;
     public RecyclerView mRecyclerView;
@@ -40,22 +44,28 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
     ArrayList<Comic> comicList  = new ArrayList<Comic>();
     private FirebaseAuth mAuth;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        @SuppressLint("InflateParams")
+        View contentView = inflater.inflate(R.layout.activity_main, null, false);
+        drawer.addView(contentView,0);
+        ImageView add = findViewById(R.id.comic_add);
+
+
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
         requestQueue = Volley.newRequestQueue(this);
         Log.i("API", "it hits on create");
         test(requestQueue);
 
-        mDrawer = findViewById(R.id.drawer_layout);
+        //mDrawer = findViewById(R.id.drawer_layout);
 
         mAuth = FirebaseAuth.getInstance();
 
-        comicPage = findViewById(R.id.button_comic);
+
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -74,8 +84,8 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
             FirebaseUser currentUser = mAuth.getCurrentUser();
             if(currentUser != null) {
                 userEmail = currentUser.getEmail();
+                //add.setVisibility(View.GONE);
             }
-
     }
 
 
@@ -233,11 +243,11 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
         }
         else
         {
-            startActivity (new Intent(this, SavedComicsActivity.SignUpInActivity.class));
+            startActivity (new Intent(this, SignUpInActivity.class));
         }
     }
     public void GoToSignInPage(View v){
-        startActivity (new Intent(this, SavedComicsActivity.SignUpInActivity.class));
+        startActivity (new Intent(this, SignUpInActivity.class));
     }
 
     //cannot get search working as crashes on startup

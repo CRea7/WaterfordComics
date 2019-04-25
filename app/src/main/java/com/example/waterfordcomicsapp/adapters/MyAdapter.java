@@ -10,10 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.waterfordcomicsapp.R;
+import com.example.waterfordcomicsapp.activities.MainActivity;
 import com.example.waterfordcomicsapp.activities.SavedComicsActivity;
+import com.example.waterfordcomicsapp.activities.SignUpInActivity;
 import com.example.waterfordcomicsapp.models.Comic;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -26,6 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<Comic> mDataset;
     private DatabaseReference mDatabase;
     private Context mContext;
+    private FirebaseAuth mAuth;
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -83,10 +89,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         //Adds comic item to firebase same done
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Comic");
 
+
+        mAuth = FirebaseAuth.getInstance();
+        final FirebaseUser currentUser = mAuth.getCurrentUser();
+
+
         holder.addImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabase.child(comic.getComicId()).setValue(comic);
+                String allowed = "no";
+                if(currentUser != null) {
+                    allowed = "yes";
+                }
+
+                if(allowed == "yes") {
+                    mDatabase.child(comic.getComicId()).setValue(comic);
+                }
+                else
+                {
+                    Toast.makeText(mContext, "Please sign in first.",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

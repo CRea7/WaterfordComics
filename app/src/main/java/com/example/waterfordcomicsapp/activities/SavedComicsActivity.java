@@ -37,7 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class  SavedComicsActivity extends NavDrawerActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class  SavedComicsActivity extends NavDrawerActivity {
 
     private DatabaseReference mDatabase;
     private FirebaseDatabase db;
@@ -153,53 +153,4 @@ public class  SavedComicsActivity extends NavDrawerActivity implements Navigatio
         return false;
     }
 
-    public static class SignUpInActivity extends Base {
-
-        private FirebaseAuth mAuth;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_sign_up_in);
-            //initialize the thing to log in as this may stop crashing
-            mAuth = FirebaseAuth.getInstance();
-
-            final Button SignIn = findViewById(R.id.SignInButton);
-            SignIn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SignIn();
-                }
-            });
-
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-        }
-
-        private void SignIn()
-        {
-            EditText emailInput = findViewById(R.id.SignInEmail);
-            String email = emailInput.getText().toString();
-            EditText passwordInput = findViewById(R.id.SignInPassword);
-            String password = passwordInput.getText().toString();
-
-            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        Log.i("LogIn", "user logged in sucessfully");
-                        GoHome();
-                        userEmail = user.getEmail();
-                    } else {
-                        Log.i("LogIn","User log in failed");
-                        Toast.makeText(SignUpInActivity.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
-
-        public void GoHome(){
-            startActivity (new Intent(this, MainActivity.class));
-        }
-    }
 }

@@ -1,5 +1,6 @@
 package com.example.waterfordcomicsapp.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class MyComics extends Base {
+public class MyComics extends NavDrawerActivity {
 
     private DatabaseReference mDatabase;
     private FirebaseDatabase db;
@@ -45,7 +46,13 @@ public class MyComics extends Base {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_comics);
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        @SuppressLint("InflateParams")
+        View contentView = inflater.inflate(R.layout.activity_my_comics, null, false);
+        drawer.addView(contentView,0);
+
+
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
