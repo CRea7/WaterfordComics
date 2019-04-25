@@ -15,4 +15,10 @@
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/action_test"
+        android:orderInCategory="100"
+        android:title="test"
+        app:showAsAction="never" />
+
 </menu>

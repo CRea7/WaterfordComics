@@ -12,7 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SignUpInActivity"></activity>
+        <activity
+            android:name=".activities.NavDrawerActivity"
+            android:label="@string/title_activity_nav_drawer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activities.SavedComicsActivity$SignUpInActivity" />
         <activity android:name=".activities.MyComics" />
         <activity
             android:name=".activities.MainActivity"
@@ -24,7 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SavedComicsActivity" />
+        <activity android:name=".activities.SavedComicsActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
     </application>
 
 </manifest>

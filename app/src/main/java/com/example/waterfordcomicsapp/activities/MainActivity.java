@@ -20,7 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.waterfordcomicsapp.R;
-import com.example.waterfordcomicsapp.SignUpInActivity;
 import com.example.waterfordcomicsapp.adapters.MyAdapter;
 import com.example.waterfordcomicsapp.models.Comic;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,7 +29,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends Base implements SearchView.OnQueryTextListener {
     RequestQueue requestQueue;
@@ -52,6 +50,8 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
         requestQueue = Volley.newRequestQueue(this);
         Log.i("API", "it hits on create");
         test(requestQueue);
+
+        mDrawer = findViewById(R.id.drawer_layout);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -103,6 +103,8 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_LogOut) {
             FirebaseAuth.getInstance().signOut();
+        } else if (id == R.id.action_test){
+            startActivity (new Intent(this, NavDrawerActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -231,11 +233,11 @@ public class MainActivity extends Base implements SearchView.OnQueryTextListener
         }
         else
         {
-            startActivity (new Intent(this, SignUpInActivity.class));
+            startActivity (new Intent(this, SavedComicsActivity.SignUpInActivity.class));
         }
     }
     public void GoToSignInPage(View v){
-        startActivity (new Intent(this, SignUpInActivity.class));
+        startActivity (new Intent(this, SavedComicsActivity.SignUpInActivity.class));
     }
 
     //cannot get search working as crashes on startup

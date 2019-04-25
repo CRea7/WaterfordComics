@@ -1,5 +1,6 @@
 package com.example.waterfordcomicsapp.activities;
 
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -21,6 +22,7 @@ public class Base extends AppCompatActivity {
 
     //Declare a private RequestQueue variable
     public String userEmail = "";
+    protected DrawerLayout mDrawer;
 
     private static Base mInstance;
 
