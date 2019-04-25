@@ -17,5 +17,7 @@ and keep the comics aside for them.
 #### Search : https://www.youtube.com/watch?v=qzbvDJqXeJs
 #### Recycler onclick : https://www.youtube.com/watch?v=ZXoGG2XTjzU
 #### Firebase recycler filter: https://stackoverflow.com/questions/45966414/android-how-to-filter-the-recyclerview-of-firebase
+#### Nav drawer help: https://stackoverflow.com/questions/21405958/how-to-display-navigation-drawer-in-all-activities
+#### Nav drawer help: https://www.youtube.com/watch?v=SIW6RCYmBBo
 
 ### Demo Link: 
