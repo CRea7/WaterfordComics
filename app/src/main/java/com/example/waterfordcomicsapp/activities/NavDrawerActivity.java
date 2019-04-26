@@ -64,11 +64,13 @@ public class NavDrawerActivity extends AppCompatActivity
             userEmail = currentUser.getEmail();
             nav_Menu.findItem(R.id.nav_signIn).setVisible(false);
             nav_Menu.findItem(R.id.nav_logOut).setVisible(true);
+            nav_Menu.findItem(R.id.nav_create).setVisible(false);
             //nav_Menu.findItem(R.id.nav_Email).setTitle(userEmail);
         }
         else{
             nav_Menu.findItem(R.id.nav_signIn).setVisible(true);
             nav_Menu.findItem(R.id.nav_logOut).setVisible(false);
+            nav_Menu.findItem(R.id.nav_create).setVisible(true);
             //nav_Menu.findItem(R.id.nav_Email).setTitle("Sign In to display information");
         }
 
@@ -128,6 +130,7 @@ public class NavDrawerActivity extends AppCompatActivity
         } else if (id == R.id.nav_signIn) {
             startActivity (new Intent(this, SignUpInActivity.class));
         } else if (id == R.id.nav_create) {
+            startActivity (new Intent(this, CreateAccountActivity.class));
         } else if (id == R.id.nav_logOut) {
             FirebaseAuth.getInstance().signOut();
             startActivity (new Intent(this, MainActivity.class));
@@ -138,17 +141,17 @@ public class NavDrawerActivity extends AppCompatActivity
         return true;
     }
 
-    public void UpdateUI(Menu menu)
-    {
-        logIn = menu.findItem(R.id.nav_signIn);
-        logOut = menu.findItem(R.id.nav_logOut);
-
-        if(userEmail == "") {
-            logIn.setVisible(true);
-            logOut.setVisible(true);
-        }else{
-            logIn.setVisible(true);
-            logOut.setVisible(true);
-        }
-    }
+//    public void UpdateUI(Menu menu)
+//    {
+//        logIn = menu.findItem(R.id.nav_signIn);
+//        logOut = menu.findItem(R.id.nav_logOut);
+//
+//        if(userEmail == "") {
+//            logIn.setVisible(true);
+//            logOut.setVisible(true);
+//        }else{
+//            logIn.setVisible(true);
+//            logOut.setVisible(true);
+//        }
+//    }
 }

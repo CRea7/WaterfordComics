@@ -136,7 +136,7 @@ public class MyComics extends NavDrawerActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        MenuItem menuItem = menu.findItem(R.id.action_search);
+
 
         //This makes it crash on startup not sure why
         //SearchView searchView = (SearchView) menuItem.getActionView();
