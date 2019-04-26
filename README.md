@@ -19,5 +19,6 @@ and keep the comics aside for them.
 #### Firebase recycler filter: https://stackoverflow.com/questions/45966414/android-how-to-filter-the-recyclerview-of-firebase
 #### Nav drawer help: https://stackoverflow.com/questions/21405958/how-to-display-navigation-drawer-in-all-activities
 #### Nav drawer help: https://www.youtube.com/watch?v=SIW6RCYmBBo
+#### create and sign in user: https://firebase.google.com/docs/auth/android/password-auth
 
 ### Demo Link: 
