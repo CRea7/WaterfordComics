@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.waterfordcomicsapp.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class NavDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,6 +26,9 @@ public class NavDrawerActivity extends AppCompatActivity
 
     NavigationView navigationView;
     DrawerLayout drawer;
+    private FirebaseAuth mAuth;
+    MenuItem logIn;
+    MenuItem logOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,24 @@ public class NavDrawerActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Menu nav_Menu = navigationView.getMenu();
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null)
+        {
+            userEmail = currentUser.getEmail();
+            nav_Menu.findItem(R.id.nav_signIn).setVisible(false);
+            nav_Menu.findItem(R.id.nav_logOut).setVisible(true);
+            //nav_Menu.findItem(R.id.nav_Email).setTitle(userEmail);
+        }
+        else{
+            nav_Menu.findItem(R.id.nav_signIn).setVisible(true);
+            nav_Menu.findItem(R.id.nav_logOut).setVisible(false);
+            //nav_Menu.findItem(R.id.nav_Email).setTitle("Sign In to display information");
+        }
+
     }
 
     @Override
@@ -60,10 +84,12 @@ public class NavDrawerActivity extends AppCompatActivity
         }
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.nav_drawer, menu);
+        //UpdateUI(menu);
         return true;
     }
 
@@ -102,11 +128,27 @@ public class NavDrawerActivity extends AppCompatActivity
         } else if (id == R.id.nav_signIn) {
             startActivity (new Intent(this, SignUpInActivity.class));
         } else if (id == R.id.nav_create) {
-
+        } else if (id == R.id.nav_logOut) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity (new Intent(this, MainActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void UpdateUI(Menu menu)
+    {
+        logIn = menu.findItem(R.id.nav_signIn);
+        logOut = menu.findItem(R.id.nav_logOut);
+
+        if(userEmail == "") {
+            logIn.setVisible(true);
+            logOut.setVisible(true);
+        }else{
+            logIn.setVisible(true);
+            logOut.setVisible(true);
+        }
     }
 }

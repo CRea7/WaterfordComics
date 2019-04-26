@@ -19,7 +19,13 @@
             <item
                 android:id="@+id/nav_signIn"
                 android:icon="@drawable/ic_person_black_24dp"
-                android:title="SignIn" />
+                android:title="Sign In"
+                android:visible="true"/>
+            <item
+                android:id="@+id/nav_logOut"
+                android:icon="@drawable/ic_person_black_24dp"
+                android:title="Log Out"
+                android:visible="false"/>
             <item
                 android:id="@+id/nav_create"
                 android:icon="@drawable/ic_person_add_black_24dp"

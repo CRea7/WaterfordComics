@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,6 +47,20 @@ public class SignUpInActivity extends NavDrawerActivity {
         });
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+
+        //This makes it crash on startup not sure why
+        //SearchView searchView = (SearchView) menuItem.getActionView();
+        //searchView.setOnQueryTextListener(this);
+
+        return true;
     }
 
     private void SignIn()
