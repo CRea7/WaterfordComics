@@ -1,6 +1,7 @@
 package com.example.waterfordcomicsapp.activities;
 
 import android.annotation.SuppressLint;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -34,7 +36,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity extends NavDrawerActivity implements SearchView.OnQueryTextListener {
+public class MainActivity extends NavDrawerActivity {
     RequestQueue requestQueue;
     Button comicPage;
     public RecyclerView mRecyclerView;
@@ -42,6 +44,7 @@ public class MainActivity extends NavDrawerActivity implements SearchView.OnQuer
     public RecyclerView.LayoutManager mLayoutManager;
     String ReturnString;
     ArrayList<Comic> comicList  = new ArrayList<Comic>();
+    ArrayList<Comic> searchComicList  = new ArrayList<Comic>();
     private FirebaseAuth mAuth;
 
     @Override
@@ -97,8 +100,48 @@ public class MainActivity extends NavDrawerActivity implements SearchView.OnQuer
         MenuItem menuItem = menu.findItem(R.id.action_search);
 
         //This makes it crash on startup not sure why
-        //SearchView searchView = (SearchView) menuItem.getActionView();
-        //searchView.setOnQueryTextListener(this);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) findViewById(R.id.SearchTest);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                for (Comic comic : comicList)
+                {
+                    if (comic.comicTitle.contains(query))
+                    {
+                        searchComicList.add(comic);
+                    }
+                }
+                comicList.clear();
+
+                for (Comic newComic : searchComicList)
+                {
+                    comicList.add(newComic);
+                }
+
+                mAdapter.notifyDataSetChanged();
+
+//                if (query == "" || query == null)
+//                {
+//                    test(requestQueue);
+//                }
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (newText.equals(""))
+                {
+                    comicList.clear();
+                    test(requestQueue);
+                }
+                return true;
+            }
+        });
+
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setIconifiedByDefault(false);
 
         return true;
     }
@@ -111,9 +154,7 @@ public class MainActivity extends NavDrawerActivity implements SearchView.OnQuer
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_LogOut) {
-            FirebaseAuth.getInstance().signOut();
-        } else if (id == R.id.action_test){
+        if (id == R.id.action_test){
             startActivity (new Intent(this, NavDrawerActivity.class));
         }
 
@@ -251,31 +292,32 @@ public class MainActivity extends NavDrawerActivity implements SearchView.OnQuer
     }
 
     //cannot get search working as crashes on startup
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-
-        ArrayList<Comic> comicArrayList = new ArrayList<>();
-        for (Comic item : comicList)
-        {
-            if(item.comicTitle.contains(query))
-            {
-                comicArrayList.add(item);
-            }
-        }
-
-        comicList = null;
-
-        for (Comic comic : comicArrayList)
-        {
-            comicList.add(comic);
-        }
-        mAdapter.notifyDataSetChanged();
-        return true;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-
-        return false;
-    }
+//    @Override
+//    public boolean onQueryTextSubmit(String query) {
+//
+//        for (Comic comic : comicList)
+//        {
+//            if (comic.comicTitle.contains(query))
+//            {
+//                searchComicList.add(comic);
+//            }
+//        }
+//        comicList.clear();
+//
+//        for (Comic newComic : searchComicList)
+//        {
+//            comicList.add(newComic);
+//        }
+//
+//        mAdapter.notifyDataSetChanged();
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onQueryTextChange(String newText) {
+//
+//
+//
+//        return false;
+//    }
 }

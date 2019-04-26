@@ -3,12 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.waterfordcomicsapp.activities.MainActivity">
     <item
-        android:id="@+id/action_LogOut"
-        android:orderInCategory="100"
-        android:title="Log out"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_search"
         android:icon="@android:drawable/ic_search_category_default"
         android:title="Search"
