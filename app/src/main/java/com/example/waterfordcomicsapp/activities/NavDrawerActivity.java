@@ -37,6 +37,7 @@ public class NavDrawerActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +119,7 @@ public class NavDrawerActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             startActivity (new Intent(this, MainActivity.class));
+            //getSupportActionBar().setTitle("Featured");
         } else if (id == R.id.nav_saved) {
             if(userEmail != "")
             {
@@ -134,6 +136,11 @@ public class NavDrawerActivity extends AppCompatActivity
         } else if (id == R.id.nav_logOut) {
             FirebaseAuth.getInstance().signOut();
             startActivity (new Intent(this, MainActivity.class));
+        }  else if (id == R.id.nav_maps) {
+            startActivity (new Intent(this, MapsActivity.class));
+        } else if (id == R.id.nav_account){
+            startActivity(new Intent(this, MyAccount.class));
+            //getSupportActionBar().setTitle("My Account");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

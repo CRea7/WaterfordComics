@@ -10,6 +10,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -52,6 +53,8 @@ public class  SavedComicsActivity extends NavDrawerActivity {
         @SuppressLint("InflateParams")
         View contentView = inflater.inflate(R.layout.activity_savedcomics, null, false);
         drawer.addView(contentView,0);
+
+        getSupportActionBar().setTitle("Saved Comics");
         //navigationView.setCheckedItem(R.id.nav_home);
 
         //Toolbar toolbar = findViewById(R.id.toolbar);
@@ -76,6 +79,15 @@ public class  SavedComicsActivity extends NavDrawerActivity {
 
 
         getIncomingIntent();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+
+        return true;
     }
 
     private void getIncomingIntent(){

@@ -35,6 +35,8 @@ public class CreateAccountActivity extends NavDrawerActivity {
         View contentView = inflater.inflate(R.layout.activity_create_account, null, false);
         drawer.addView(contentView,0);
 
+        getSupportActionBar().setTitle("Create Account");
+
         mAuth = FirebaseAuth.getInstance();
 
         Button createAccount = findViewById(R.id.CreatedButton);

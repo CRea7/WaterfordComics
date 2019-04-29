@@ -54,6 +54,7 @@ public class MyComics extends NavDrawerActivity {
         View contentView = inflater.inflate(R.layout.activity_my_comics, null, false);
         drawer.addView(contentView,0);
 
+        getSupportActionBar().setTitle("Saved Comics");
 
         mAuth = FirebaseAuth.getInstance();
 

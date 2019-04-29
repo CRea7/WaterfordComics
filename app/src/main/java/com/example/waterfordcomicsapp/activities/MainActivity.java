@@ -57,6 +57,8 @@ public class MainActivity extends NavDrawerActivity {
         drawer.addView(contentView,0);
         ImageView add = findViewById(R.id.comic_add);
 
+        getSupportActionBar().setTitle("Featured");
+
 
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -76,14 +78,6 @@ public class MainActivity extends NavDrawerActivity {
         mAdapter = new MyAdapter(this, comicList);
         mRecyclerView.setAdapter(mAdapter);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                test(requestQueue);
-                String Text_View = ReturnString;
-            }
-        });
             FirebaseUser currentUser = mAuth.getCurrentUser();
             if(currentUser != null) {
                 userEmail = currentUser.getEmail();

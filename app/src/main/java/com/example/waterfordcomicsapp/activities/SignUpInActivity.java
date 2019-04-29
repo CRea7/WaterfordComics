@@ -34,6 +34,8 @@ public class SignUpInActivity extends NavDrawerActivity {
         @SuppressLint("InflateParams")
         View contentView = inflater.inflate(R.layout.activity_sign_up_in, null, false);
         drawer.addView(contentView,0);
+
+        getSupportActionBar().setTitle("Sign In");
         //initialize the thing to log in as this may stop crashing
         mAuth = FirebaseAuth.getInstance();
 

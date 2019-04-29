@@ -7,15 +7,24 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home"
-            android:title="Home" />
+            android:title="Featured" />
         <item
             android:id="@+id/nav_saved"
             android:icon="@drawable/ic_star_black_24dp"
             android:title="Saved Comics" />
+        <item
+            android:id="@+id/nav_maps"
+            android:icon="@drawable/ic_directions_black_24dp"
+            android:title="Where were located" />
     </group>
 
-    <item android:title="Log in options">
+    <item android:title="Account options">
         <menu>
+            <item
+                android:id="@+id/nav_account"
+                android:icon="@drawable/ic_person_black_24dp"
+                android:title="My Account"
+                android:visible="true"/>
             <item
                 android:id="@+id/nav_signIn"
                 android:icon="@drawable/ic_person_black_24dp"
