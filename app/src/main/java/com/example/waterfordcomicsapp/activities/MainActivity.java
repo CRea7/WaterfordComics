@@ -148,7 +148,7 @@ public class MainActivity extends NavDrawerActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_test){
-            startActivity (new Intent(this, NavDrawerActivity.class));
+            startActivity (new Intent(this, Help.class));
         }
 
         return super.onOptionsItemSelected(item);

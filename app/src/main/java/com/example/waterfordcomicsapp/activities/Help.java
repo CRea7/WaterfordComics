@@ -18,7 +18,7 @@ public class Help extends NavDrawerActivity {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         @SuppressLint("InflateParams")
-        View contentView = inflater.inflate(R.layout.activity_sign_up_in, null, false);
+        View contentView = inflater.inflate(R.layout.activity_help, null, false);
         drawer.addView(contentView,0);
         getSupportActionBar().setTitle("Help");
     }

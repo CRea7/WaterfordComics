@@ -24,22 +24,22 @@
         android:id="@+id/textView2"
         android:layout_width="241dp"
         android:layout_height="45dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:text="This app is for the customers of waterford comics"
         android:textAppearance="@android:style/TextAppearance.Medium"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.028"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="364dp"
-        android:layout_height="134dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="355dp"
+        android:layout_height="151dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:text="This app allows you to save comics that you wish to buy in store. When you add the the staff in store will then hold the comic for you so when you enter the store you can purchase it. It will then be removed from your list"
         android:textAppearance="@android:style/TextAppearance.Medium"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,10 +49,28 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="When you launch the app you will be in the featured page it is from here where you can add comics to your list. First you must be signed in. You can either create an account or sign in by"
+        android:layout_width="358dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="When you launch the app you will be in the featured page it is from here where you can add comics to your list. First you must be signed in. You can either create an account or sign in by using the menu on the left that you can slide to access."
         android:textAppearance="@android:style/TextAppearance.Medium"
-        tools:layout_editor_absoluteX="62dp"
-        tools:layout_editor_absoluteY="355dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="350dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:text="When you add a comic to your list you can view them in saved comics and if you click on the comic you can add a note to it that the store can view"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 </android.support.constraint.ConstraintLayout>

@@ -66,12 +66,14 @@ public class NavDrawerActivity extends AppCompatActivity
             nav_Menu.findItem(R.id.nav_signIn).setVisible(false);
             nav_Menu.findItem(R.id.nav_logOut).setVisible(true);
             nav_Menu.findItem(R.id.nav_create).setVisible(false);
+            nav_Menu.findItem(R.id.nav_account).setVisible(true);
             //nav_Menu.findItem(R.id.nav_Email).setTitle(userEmail);
         }
         else{
             nav_Menu.findItem(R.id.nav_signIn).setVisible(true);
             nav_Menu.findItem(R.id.nav_logOut).setVisible(false);
             nav_Menu.findItem(R.id.nav_create).setVisible(true);
+            nav_Menu.findItem(R.id.nav_account).setVisible(false);
             //nav_Menu.findItem(R.id.nav_Email).setTitle("Sign In to display information");
         }
 
@@ -141,6 +143,9 @@ public class NavDrawerActivity extends AppCompatActivity
         } else if (id == R.id.nav_account){
             startActivity(new Intent(this, MyAccount.class));
             //getSupportActionBar().setTitle("My Account");
+        } else if (id == R.id.nav_help)
+        {
+            startActivity(new Intent(this, Help.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
