@@ -20,5 +20,7 @@ and keep the comics aside for them.
 #### Nav drawer help: https://stackoverflow.com/questions/21405958/how-to-display-navigation-drawer-in-all-activities
 #### Nav drawer help: https://www.youtube.com/watch?v=SIW6RCYmBBo
 #### create and sign in user: https://firebase.google.com/docs/auth/android/password-auth
+#### Google Maps: https://developers.google.com/maps/documentation/android-sdk/start
+#### Google Maps: https://stackoverflow.com/questions/14074129/google-maps-v2-set-both-my-location-and-zoom-in
 
 ### Demo Link: 
